@@ -49,6 +49,7 @@ class StatusFragment : StatusBaseFragment() {
                         mCurrentPage=0
                     }
                     vp_main.currentItem =mCurrentPage
+                    mStatusViewModel.changeStatusOfCurrentStatus(mCurrentPage,0)
 
                 }
             }

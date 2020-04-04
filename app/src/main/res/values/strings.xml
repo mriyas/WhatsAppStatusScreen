@@ -12,7 +12,7 @@ uppercase, 1 lowercase, 1 number and 1 special character</string>
     <string name="retry">Retry</string>
     <string name="invalid_file">Invalid file</string>
     <string name="something_went_wrong">Something went wrong please try again..!</string>
-    <string name="invalid_password_length">Password should be of 8-15 characters length</string>
+    <string name="invalid_password_length">Password should be of 8-16 characters length</string>
     <string name="invalid_password_caps">Password should have at least 1
 uppercase</string>
     <string name="invalid_password_lower">Password should have at least 1lowercase</string>

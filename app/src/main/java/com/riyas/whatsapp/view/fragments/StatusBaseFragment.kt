@@ -46,9 +46,9 @@ open class StatusBaseFragment : Fragment() {
                         Log.v(TAG, "setTouchListener() : ACTION_DOWN : x=${event.x} , y=${event.y}")
 
                         val margin = width / 2
-                        if (event.x < margin&&mCurrentPage>0) {
+                        if (event.x < margin) {
                             mStatusViewModel.setState(AppConstants.ViewPager.PREV)
-                        } else if(mCurrentPage<mStatusViewModel.getStatusItems().size) {
+                        } else {
                             mStatusViewModel.setState(AppConstants.ViewPager.NEXT)
 
                         }
@@ -69,7 +69,7 @@ open class StatusBaseFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        if(this !is StatusFragment) {
+        if (this !is StatusFragment) {
             cancelTimer()
         }
     }
@@ -77,17 +77,20 @@ open class StatusBaseFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        if(this !is StatusFragment) {
+        if (this !is StatusFragment) {
             runTimer()
         }
 
     }
 
-    private fun runTimer() {
-        if (mTimer == null) {
 
-            mTimer = Timer()
+
+
+    private fun runTimer() {
+        if (mTimer != null) {
+            cancelTimer()
         }
+        mTimer = Timer()
         // val time=pulse
         val task = object : TimerTask() {
             override fun run() {

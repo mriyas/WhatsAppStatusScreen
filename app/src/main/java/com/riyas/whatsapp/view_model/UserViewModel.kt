@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import java.util.regex.Pattern
 
 
-class UserViewModel(application: Application) : BaseViewModel(application) {
+open class UserViewModel(application: Application) : BaseViewModel(application) {
 
     val TAG = javaClass.simpleName
 
@@ -92,7 +92,7 @@ class UserViewModel(application: Application) : BaseViewModel(application) {
         return errorMSg;
     }
 
-    private fun isValidEmail(email: String): Boolean {
+   private  fun isValidEmail(email: String): Boolean {
         val pattern = Pattern.compile(
             "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
                     "\\@" +
@@ -101,7 +101,7 @@ class UserViewModel(application: Application) : BaseViewModel(application) {
                     "\\." +
                     "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
                     ")+"
-        );
+        )
         return pattern.matcher(email).matches()
     }
 
@@ -130,7 +130,7 @@ class UserViewModel(application: Application) : BaseViewModel(application) {
         var errorMSg: String? = null
         val length = password.length
 
-        if (length < 4 && length > 15) {
+        if (length < 8 || length > 16) {
             errorMSg = mApplication?.getString(R.string.invalid_password_length)
             return errorMSg
         }
